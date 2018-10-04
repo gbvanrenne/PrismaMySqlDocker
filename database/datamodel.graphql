@@ -1,0 +1,33 @@
+type Customer {
+  id: ID! @unique
+  userInfo: User!
+  _18L: Boolean! @default(value: "false")
+    _18L_bal: Int! @default(value: 0)
+    _18L_balPrev: Int! @default(value: 0)
+  _11L: Boolean! @default(value: "false")
+    _11L_bal: Int! @default(value: 0)
+    _11L_balPrev: Int! @default(value: 0)
+  _oneL: Boolean! @default(value: "false")
+    _oneL_bal: Int! @default(value: 0)
+    _oneL_balPrev: Int! @default(value: 0)
+  ROFilter: Boolean! @default(value: "false")
+    ROFilter_lastPurchase: DateTime
+}
+
+type User {
+  id: ID! @unique
+  username: String! @unique
+  email: String! @unique
+  password: String!
+  firstName: String!
+  lastName: String!
+  address: String!
+  city: String!
+  province: String
+  postalCode: String
+  phone: String
+  customerInfo: Customer
+  isActive: Boolean! @default(value: "true")
+  isEmployee: Boolean! @default(value: "false")
+  isAdmin: Boolean! @default(value: "false")
+}
