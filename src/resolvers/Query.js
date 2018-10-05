@@ -58,11 +58,9 @@ function linkPostedBy(parent, args, context, info) {
 // LIST OF USERS
 // ===================================================
 function getUsers(parent, args, context, info) {
-
   return context.db.query.users(
     {},
-    info,
-  )
+    info)
 }
 
 

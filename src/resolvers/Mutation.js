@@ -58,6 +58,7 @@ async function editLink(parent, args, ctx, info) {
 // ---------------------------------------------------------------
 async function signup(parent, args, ctx, info) {
   const password = await bcrypt.hash(args.password, 10)
+
   const user = await ctx.db.mutation.createUser({
     data: { ...args, password },
   })
