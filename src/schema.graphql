@@ -2,15 +2,17 @@
 # import LinkUpdateInput from "./generated/prisma.graphql" 
 # import LinkWhereUniqueInput from "./generated/prisma.graphql" 
 # import LinkSubscriptionPayload from "./generated/prisma.graphql" 
-# import Vote from "./generated/prisma.graphql" 
-# import VoteSubscriptionPayload from "./generated/prisma.graphql" 
 # import LinkOrderByInput from "./generated/prisma.graphql" 
+# import UserWhereInput, UserOrderByInput from "./generated/prisma.graphql"
+# import User from "./generated/prisma.graphql"
 
 type Query {
+  getUsers: [User!]!
   info: String!
   feed(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
-  linkList(filter: String, orderBy: LinkOrderByInput): [Link!]!
+  getLinks(filter: String, orderBy: LinkOrderByInput): [Link!]!
   linkPostedBy(linkID: ID!): Link!
+  # getUsers(filter: String, skip: Int, first: Int, where: UserWhereInput, orderBy: UserOrderByInput): [User!]!
 }
 
 type Feed {
@@ -23,22 +25,13 @@ type Mutation {
   editLink(url: String, description: String, linkID: ID!): Link
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
-  vote(linkId: ID!): Vote!
 }
 
 type Subscription {
   newLink: LinkSubscriptionPayload
-  newVote: VoteSubscriptionPayload
 }
 
 type AuthPayload {
   token: String
   user: User
-}
-
-type User {
-  id: ID!
-  name: String!
-  email: String!
-  links: [Link!]!
 }

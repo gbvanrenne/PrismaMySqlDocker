@@ -133,5 +133,5 @@ module.exports = {
   editLink,
   signup,
   login,
-  vote,
+// vote,
 }

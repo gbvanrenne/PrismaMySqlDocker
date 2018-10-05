@@ -1,17 +1,33 @@
-type Customer {
+# type Customer {
+#   id: ID! @unique
+#   userInfo: User!
+#   _18L: Boolean! @default(value: "false")
+#     _18L_bal: Int! @default(value: 0)
+#     _18L_balPrev: Int! @default(value: 0)
+#   _11L: Boolean! @default(value: "false")
+#     _11L_bal: Int! @default(value: 0)
+#     _11L_balPrev: Int! @default(value: 0)
+#   _oneL: Boolean! @default(value: "false")
+#     _oneL_bal: Int! @default(value: 0)
+#     _oneL_balPrev: Int! @default(value: 0)
+#   ROFilter: Boolean! @default(value: "false")
+#     ROFilter_lastPurchase: DateTime
+# }
+
+# type Product {
+#   L18_active: Boolean! @default(value: "false")
+#   L11_active: Boolean! @default(value: "false")
+#   Lone_active: Boolean! @default(value: "false")
+#   ROFilter_active: Boolean! @default(value: "false")
+# }
+
+type Link {
   id: ID! @unique
-  userInfo: User!
-  _18L: Boolean! @default(value: "false")
-    _18L_bal: Int! @default(value: 0)
-    _18L_balPrev: Int! @default(value: 0)
-  _11L: Boolean! @default(value: "false")
-    _11L_bal: Int! @default(value: 0)
-    _11L_balPrev: Int! @default(value: 0)
-  _oneL: Boolean! @default(value: "false")
-    _oneL_bal: Int! @default(value: 0)
-    _oneL_balPrev: Int! @default(value: 0)
-  ROFilter: Boolean! @default(value: "false")
-    ROFilter_lastPurchase: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  description: String!
+  url: String!
+  postedBy: User
 }
 
 type User {
@@ -26,7 +42,7 @@ type User {
   province: String
   postalCode: String
   phone: String
-  customerInfo: Customer
+  links: [Link!]!
   isActive: Boolean! @default(value: "true")
   isEmployee: Boolean! @default(value: "false")
   isAdmin: Boolean! @default(value: "false")

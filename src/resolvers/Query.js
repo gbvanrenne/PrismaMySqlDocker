@@ -31,7 +31,7 @@ async function feed(parent, args, context, info) {
 // ===================================================
 // LINK LIST
 // ===================================================
-function linkList(parent, args, context, info) {
+function getLinks(parent, args, context, info) {
   return context.db.query.links(
     {
       where: 
@@ -54,8 +54,21 @@ function linkPostedBy(parent, args, context, info) {
   )
 }
 
+// ===================================================
+// LIST OF USERS
+// ===================================================
+function getUsers(parent, args, context, info) {
+
+  return context.db.query.users(
+    {},
+    info,
+  )
+}
+
+
 module.exports = {
   feed,
-  linkList,
+  getLinks,
   linkPostedBy,
+  getUsers,
 }
